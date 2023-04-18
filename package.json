@@ -1,6 +1,6 @@
 {
   "name": "@jviray/component-library",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A react component library",
   "author": "Jonathan Viray",
   "publishConfig": {
@@ -14,22 +14,37 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.4",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-terser": "^0.4.1",
     "@rollup/plugin-typescript": "^11.1.0",
+    "@storybook/addon-actions": "^7.0.5",
+    "@storybook/addon-essentials": "^7.0.5",
+    "@storybook/addon-links": "^7.0.5",
+    "@storybook/addon-mdx-gfm": "^7.0.5",
+    "@storybook/react": "^7.0.5",
+    "@storybook/react-webpack5": "^7.0.5",
     "@types/react": "^18.0.35",
+    "babel-loader": "^8.3.0",
+    "react": ">=16.12.0",
+    "react-dom": ">=16.12.0",
     "rollup": "^3.20.4",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "storybook": "^7.0.5",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "react": ">=16.12.0",
-    "react-dom": ">=16.12.0"
+    "react": ">=16.12.0"
   }
 }
