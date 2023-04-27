@@ -12,5 +12,5 @@ module.exports = {
   docs: {
     autodocs: false,
   },
-  staticDirs: ['../public'], // Configures the static asset folder in Storybook
+  staticDirs: ['../assets'], // Configures the static asset folder in Storybook
 };

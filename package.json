@@ -14,6 +14,7 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
+    "svgr": "svgr --icon --title-prop --replace-attr-values '#000={props.color}' --typescript -d src/icons assets",
     "rollup": "rollup -c",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -34,6 +35,7 @@
     "@storybook/preview-api": "^7.0.7",
     "@storybook/react": "^7.0.5",
     "@storybook/react-webpack5": "^7.0.5",
+    "@svgr/cli": "^7.0.0",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",

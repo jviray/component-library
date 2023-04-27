@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import Tooltip from './Tooltip';
+import { InfoOutline } from '../../../icons';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Data Display/Tooltip',
@@ -28,8 +29,6 @@ export const Default: Story = {
 
 export const Icon: Story = {
   args: {
-    children: (
-      <img src="/info-icon.svg" alt="info-icon" style={{ display: 'block' }} />
-    ),
+    children: <InfoOutline display={'block'} fontSize={32} color={'#FFBC58'} />,
   },
 };
