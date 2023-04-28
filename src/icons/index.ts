@@ -1,1 +1,1 @@
-export { default as InfoOutline } from './InfoOutline';
+export { default as InfoIcon } from "./InfoIcon";

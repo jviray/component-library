@@ -16,6 +16,7 @@
   "scripts": {
     "svgr": "svgr --icon --title-prop --replace-attr-values '#000={props.color}' --typescript -d src/icons assets",
     "rollup": "rimraf dist && rollup -c",
+    "build": "yarn svgr && yarn rollup",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
