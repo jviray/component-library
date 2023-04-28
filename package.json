@@ -15,7 +15,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "svgr": "svgr --icon --title-prop --replace-attr-values '#000={props.color}' --typescript -d src/icons assets",
-    "rollup": "rollup -c",
+    "rollup": "rimraf dist && rollup -c",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -42,7 +42,8 @@
     "babel-loader": "^8.3.0",
     "react": ">=16.12.0",
     "react-dom": ">=16.12.0",
-    "rollup": "^3.20.4",
+    "rimraf": "^5.0.0",
+    "rollup": "^3.21.0",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "storybook": "^7.0.5",
