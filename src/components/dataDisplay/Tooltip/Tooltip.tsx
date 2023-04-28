@@ -9,8 +9,8 @@ interface TooltipProps {
 }
 
 const Tooltip = ({
-  children,
-  message,
+  children = 'Target',
+  message = 'Insert message',
   placement = 'top',
   messageBoxWidth = 160,
 }: TooltipProps) => {
@@ -25,12 +25,7 @@ const Tooltip = ({
   );
 };
 
-// Remove dupe w/ component and styled props!
-interface StyledTooltipProps {
-  message: string;
-  placement: 'top' | 'right' | 'bottom' | 'left';
-  messageBoxWidth: number;
-}
+interface StyledTooltipProps extends Omit<TooltipProps, 'chilrden'> {}
 
 const StyledToolip = styled.div<StyledTooltipProps>`
   position: relative;
