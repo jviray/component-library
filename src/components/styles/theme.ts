@@ -1,17 +1,11 @@
+import { DefaultTheme } from 'styled-components';
+
 const CRAYOLA = '#18A974';
 const PITCH_BLACK = '#000000';
 const LOTION = '#FAFAFA';
-
 const BORDER_RADIUS = '10px';
 
-interface Theme {
-  palette: { [key: string]: string };
-  spacing: string[];
-  typography: { sizing: string[] };
-  borderRadius: string;
-}
-
-export const theme: Theme = {
+export const theme: DefaultTheme = {
   palette: {
     primary: CRAYOLA,
     white: LOTION,

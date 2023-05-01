@@ -92,8 +92,8 @@ const StyledToolip = styled.div<StyledTooltipProps>`
     width: ${({ messageBoxWidth }) => `${messageBoxWidth}px`};
     padding: ${({ theme }) =>
       theme ? `${theme.spacing[3]} ${theme.spacing[2]}` : '0.75rem 0.5rem'};
-    font-size: ${({ theme }) => (theme ? theme.fontSz[1] : '14px')};
-    color: ${({ theme }) => (theme ? theme.colors.white : '#FAFAFA')};
+    font-size: ${({ theme }) => (theme ? theme.typography.sizing[1] : '14px')};
+    color: ${({ theme }) => (theme ? theme.palette.white : '#FAFAFA')};
     text-align: center;
     box-sizing: border-box;
     word-wrap: break-word;
