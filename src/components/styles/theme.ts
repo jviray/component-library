@@ -4,13 +4,19 @@ const LOTION = '#FAFAFA';
 
 const BORDER_RADIUS = '10px';
 
-export const theme = {
-  colors: {
+interface Theme {
+  palette: { [key: string]: string };
+  spacing: string[];
+  typography: { sizing: string[] };
+  borderRadius: string;
+}
+
+export const theme: Theme = {
+  palette: {
     primary: CRAYOLA,
     white: LOTION,
     black: PITCH_BLACK,
   },
-  borderRadius: BORDER_RADIUS,
   spacing: [
     '0', // 0
     '0.25rem', // 1
@@ -18,11 +24,11 @@ export const theme = {
     '0.75rem', // 3
     '1rem', // 4
     '1.5rem', // 5
-    '2rem', // 6
-    '3rem', // 7
-    '4rem', // 8
-    '6rem', // 9
-    '8rem', // 10
+    '2rem',
+    '3rem',
+    '4rem',
+    '6rem',
+    '8rem',
     '12rem',
     '16rem',
     '24rem',
@@ -30,5 +36,8 @@ export const theme = {
     '40rem',
     '48rem',
   ],
-  fontSz: ['12px', '14px', '16px', '18px', '20px', '24px', '32px', '48px'],
+  typography: {
+    sizing: ['12px', '14px', '16px', '18px', '20px', '24px', '32px', '48px'],
+  },
+  borderRadius: BORDER_RADIUS,
 };
