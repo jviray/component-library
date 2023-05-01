@@ -5,7 +5,7 @@ const PITCH_BLACK = '#000000';
 const LOTION = '#FAFAFA';
 const BORDER_RADIUS = '10px';
 
-export const defaultTheme: DefaultTheme = {
+const defaultTheme: DefaultTheme = {
   palette: {
     primary: CRAYOLA,
     white: LOTION,
@@ -35,3 +35,24 @@ export const defaultTheme: DefaultTheme = {
   },
   borderRadius: BORDER_RADIUS,
 };
+
+export const createTheme = (customTheme: {
+  [key: string]:
+    | number
+    | string
+    | string[]
+    | { [key: string]: number | string | string[] };
+}) => {
+  const newTheme = {
+    ...defaultTheme,
+    ...customTheme,
+    palette: {
+      ...defaultTheme.palette,
+      ...(customTheme.palette as {}),
+    },
+  };
+
+  return newTheme;
+};
+
+export default defaultTheme;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Preview, StoryFn } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { defaultTheme } from '../src/components/styles/theme';
+import defaultTheme from '../src/theme';
 
 const preview: Preview = {
   parameters: {

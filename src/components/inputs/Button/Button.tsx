@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { defaultTheme } from '../../styles/theme';
+import defaultTheme from '../../../theme';
 
 interface ButtonProps {
   children: ReactNode;

@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import defaultTheme from '../../../theme';
+
 interface TooltipProps {
   children: ReactNode;
   message: string;
@@ -87,13 +89,12 @@ const StyledToolip = styled.div<StyledTooltipProps>`
     }}
     content: '${({ message }) => message}';
     border: 1px solid transparent;
-    border-radius: ${({ theme }) => (theme ? theme.borderRadius : '10px')};
+    border-radius: ${({ theme }) => theme.borderRadius};
     background: linear-gradient(103.17deg, #374055 13.12%, #1a202e 107%);
     width: ${({ messageBoxWidth }) => `${messageBoxWidth}px`};
-    padding: ${({ theme }) =>
-      theme ? `${theme.spacing[3]} ${theme.spacing[2]}` : '0.75rem 0.5rem'};
-    font-size: ${({ theme }) => (theme ? theme.typography.sizing[1] : '14px')};
-    color: ${({ theme }) => (theme ? theme.palette.white : '#FAFAFA')};
+    padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[2]}`};
+    font-size: ${({ theme }) => theme.typography.sizing[1]};
+    color: ${({ theme }) => theme.palette.white};
     text-align: center;
     box-sizing: border-box;
     word-wrap: break-word;
@@ -108,5 +109,10 @@ const StyledToolip = styled.div<StyledTooltipProps>`
         : `translateX(0)`};
   }
 `;
+
+// Set Default theme in case ThemeProvider is not used
+StyledToolip.defaultProps = {
+  theme: defaultTheme,
+};
 
 export default Tooltip;
