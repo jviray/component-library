@@ -5,7 +5,7 @@ const PITCH_BLACK = '#000000';
 const LOTION = '#FAFAFA';
 const BORDER_RADIUS = '10px';
 
-export const theme: DefaultTheme = {
+export const defaultTheme: DefaultTheme = {
   palette: {
     primary: CRAYOLA,
     white: LOTION,

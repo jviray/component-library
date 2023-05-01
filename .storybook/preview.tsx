@@ -2,7 +2,7 @@ import React from 'react';
 import { Preview, StoryFn } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from '../src/components/styles/theme';
+import { defaultTheme } from '../src/components/styles/theme';
 
 const preview: Preview = {
   parameters: {
@@ -16,7 +16,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story: StoryFn) => (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={defaultTheme}>
         <Story />
       </ThemeProvider>
     ),
