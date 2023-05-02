@@ -3,60 +3,68 @@ import styled from 'styled-components';
 
 import defaultTheme from '../../../theme';
 
-interface NewTooltipProps {
+interface TooltipProps {
   message: ReactNode;
   placement: 'top' | 'right' | 'bottom' | 'left';
+  messageBoxWidth: number;
   children: ReactNode;
 }
 
-const NewTooltip = ({
+const Tooltip = ({
   message = 'Insert message here...',
   placement = 'top',
+  messageBoxWidth = 190,
   children = 'Target',
-}: NewTooltipProps) => {
+}: TooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const toggleTooltip = () => setShowTooltip(!showTooltip);
 
   return (
-    <StyledTooltip>
-      <StyledTrigger onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
-        {children}
-      </StyledTrigger>
+    <StyledTooltip
+      onMouseEnter={toggleTooltip}
+      onMouseLeave={toggleTooltip}
+      placement={placement}
+    >
+      {children}
       {showTooltip && (
-        <StyledMessage placement={placement}>{message}</StyledMessage>
+        <StyledMessage messageBoxWidth={messageBoxWidth} placement={placement}>
+          {message}
+        </StyledMessage>
       )}
     </StyledTooltip>
   );
 };
 
-const StyledTooltip = styled.span`
+interface StyledTooltipProps {
+  placement: string;
+}
+
+const StyledTooltip = styled.span<StyledTooltipProps>`
+  /* border: 1px solid blue; */
   position: relative;
   display: inline-block;
   user-select: none;
+  padding-top: 1rem;
 `;
 
-const StyledTrigger = styled.span``;
-
-interface StyledMessageProps {
-  placement: string;
-}
+interface StyledMessageProps
+  extends Omit<TooltipProps, 'chilrden' | 'message'> {}
 
 const StyledMessage = styled.div<StyledMessageProps>`
   position: absolute;
   border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.borderRadius};
   background: linear-gradient(103.17deg, #374055 13.12%, #1a202e 107%);
-  width: 160px;
+  width: ${({ messageBoxWidth }) => `${messageBoxWidth}px`};
   padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[2]}`};
   font-size: ${({ theme }) => theme.typography.sizing[1]};
   color: ${({ theme }) => theme.palette.white};
   text-align: center;
   word-wrap: break-word;
   box-sizing: border-box;
-  pointer-events: none;
   z-index: 1;
 
-  bottom: 175%;
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
 `;
@@ -66,4 +74,4 @@ StyledTooltip.defaultProps = {
   theme: defaultTheme,
 };
 
-export default NewTooltip;
+export default Tooltip;

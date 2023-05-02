@@ -9,6 +9,7 @@ const meta: Meta<typeof Tooltip> = {
   component: Tooltip,
   args: {
     message: 'Read our Convex UST Post-Mortem here',
+    messageBoxWidth: 190,
   },
   parameters: {
     layout: 'centered',
@@ -27,6 +28,6 @@ export const Default: Story = {
 
 export const Icon: Story = {
   args: {
-    children: <InfoIcon display={'block'} fontSize={32} color={'#FFBC58'} />,
+    children: <InfoIcon display={'block'} fontSize={16} color={'#FFBC58'} />,
   },
 };
