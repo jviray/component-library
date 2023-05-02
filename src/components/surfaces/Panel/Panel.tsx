@@ -13,9 +13,9 @@ const Panel = ({ children, styles }: PanelProps) => {
 const StyledPanel = styled.div`
   ${({ theme }) => {
     return `
-      border: 1px solid ${theme.colors.black};
+      border: 1px solid ${theme.palette.black};
       border-radius: ${theme.borderRadius};
-      background-color: ${theme.colors.white};
+      background-color: ${theme.palette.white};
       width: 300px;
       min-height: 250px;
       padding: ${theme.spacing[4]};
