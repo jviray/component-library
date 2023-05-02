@@ -27,9 +27,14 @@ const Tooltip = ({
     >
       {children}
       {showTooltip && (
-        <StyledMessage messageBoxWidth={messageBoxWidth} placement={placement}>
-          {message}
-        </StyledMessage>
+        <StyledMessageBox placement={placement}>
+          <StyledMessageContent
+            placement={placement}
+            messageBoxWidth={messageBoxWidth}
+          >
+            {message}
+          </StyledMessageContent>
+        </StyledMessageBox>
       )}
     </StyledTooltip>
   );
@@ -44,14 +49,37 @@ const StyledTooltip = styled.span<StyledTooltipProps>`
   position: relative;
   display: inline-block;
   user-select: none;
-  padding-top: 1rem;
 `;
 
-interface StyledMessageProps
-  extends Omit<TooltipProps, 'chilrden' | 'message'> {}
+interface StyledMessageBoxProps {
+  placement: string;
+}
 
-const StyledMessage = styled.div<StyledMessageProps>`
+const StyledMessageBox = styled.div<StyledMessageBoxProps>`
+  /* border: 1px solid green; */
   position: absolute;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background: transparent;
+  box-sizing: border-box;
+  z-index: 1;
+
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 1rem;
+`;
+
+// Set Default theme in case ThemeProvider is not used
+StyledMessageBox.defaultProps = {
+  theme: defaultTheme,
+};
+
+interface StyledMessageContentProps {
+  messageBoxWidth: number;
+  placement: string;
+}
+
+const StyledMessageContent = styled.div<StyledMessageContentProps>`
   border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.borderRadius};
   background: linear-gradient(103.17deg, #374055 13.12%, #1a202e 107%);
@@ -62,15 +90,10 @@ const StyledMessage = styled.div<StyledMessageProps>`
   text-align: center;
   word-wrap: break-word;
   box-sizing: border-box;
-  z-index: 1;
-
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
 `;
 
 // Set Default theme in case ThemeProvider is not used
-StyledTooltip.defaultProps = {
+StyledMessageContent.defaultProps = {
   theme: defaultTheme,
 };
 

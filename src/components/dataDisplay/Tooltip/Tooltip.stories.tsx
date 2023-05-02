@@ -28,6 +28,6 @@ export const Default: Story = {
 
 export const Icon: Story = {
   args: {
-    children: <InfoIcon display={'block'} fontSize={16} color={'#FFBC58'} />,
+    children: <InfoIcon display={'block'} fontSize={32} color={'#FFBC58'} />,
   },
 };

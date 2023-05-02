@@ -1,6 +1,6 @@
 {
   "name": "@jviray/component-library",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A react component library",
   "author": "Jonathan Viray",
   "publishConfig": {
