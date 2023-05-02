@@ -8,9 +8,7 @@ const meta: Meta<typeof Tooltip> = {
   title: 'Data Display/Tooltip',
   component: Tooltip,
   args: {
-    message: 'Insert message',
-    placement: 'top',
-    messageBoxWidth: 160,
+    message: 'Read our Convex UST Post-Mortem here',
   },
   parameters: {
     layout: 'centered',

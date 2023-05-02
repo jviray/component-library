@@ -1,118 +1,69 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
 import defaultTheme from '../../../theme';
 
-interface TooltipProps {
-  children: ReactNode;
-  message: string;
+interface NewTooltipProps {
+  message: ReactNode;
   placement: 'top' | 'right' | 'bottom' | 'left';
-  messageBoxWidth: number;
+  children: ReactNode;
 }
 
-const Tooltip = ({
-  children = 'Target',
-  message = 'Insert message',
+const NewTooltip = ({
+  message = 'Insert message here...',
   placement = 'top',
-  messageBoxWidth = 160,
-}: TooltipProps) => {
+  children = 'Target',
+}: NewTooltipProps) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const toggleTooltip = () => setShowTooltip(!showTooltip);
+
   return (
-    <StyledToolip
-      message={message}
-      placement={placement}
-      messageBoxWidth={messageBoxWidth}
-    >
-      {children}
-    </StyledToolip>
+    <StyledTooltip>
+      <StyledTrigger onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
+        {children}
+      </StyledTrigger>
+      {showTooltip && (
+        <StyledMessage placement={placement}>{message}</StyledMessage>
+      )}
+    </StyledTooltip>
   );
 };
 
-interface StyledTooltipProps extends Omit<TooltipProps, 'chilrden'> {}
-
-const StyledToolip = styled.div<StyledTooltipProps>`
+const StyledTooltip = styled.span`
   position: relative;
   display: inline-block;
   user-select: none;
+`;
 
-  &::before {
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-    transform: ${({ placement }) => {
-      switch (placement) {
-        case 'top':
-          return 'translateY(10px)';
+const StyledTrigger = styled.span``;
 
-        case 'right':
-          return 'translateX(-10px)';
+interface StyledMessageProps {
+  placement: string;
+}
 
-        case 'bottom':
-          return 'translateY(-10px)';
+const StyledMessage = styled.div<StyledMessageProps>`
+  position: absolute;
+  border: 1px solid transparent;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background: linear-gradient(103.17deg, #374055 13.12%, #1a202e 107%);
+  width: 160px;
+  padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[2]}`};
+  font-size: ${({ theme }) => theme.typography.sizing[1]};
+  color: ${({ theme }) => theme.palette.white};
+  text-align: center;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 1;
 
-        case 'left':
-          return 'translateX(10px)';
-      }
-    }};
-    transition: opacity 0.3s, transform 0.2s;
-  }
-
-  --horizontal-offset: ${({ messageBoxWidth }) =>
-    `calc(50% - ${messageBoxWidth / 2}px)`};
-
-  &::before {
-    ${({ placement }) => {
-      switch (placement) {
-        case 'top':
-          return `
-            bottom: 175%;
-            left: var(--horizontal-offset);
-          `;
-
-        case 'right':
-          return `
-            bottom: -50%;
-            left: calc(100% + 1.2rem);
-          `;
-
-        case 'bottom':
-          return `
-            top: 175%;
-            right: var(--horizontal-offset);
-          `;
-
-        case 'left':
-          return `
-            bottom: -50%;
-            right: calc(100% + 1.2rem);
-          `;
-      }
-    }}
-    content: '${({ message }) => message}';
-    border: 1px solid transparent;
-    border-radius: ${({ theme }) => theme.borderRadius};
-    background: linear-gradient(103.17deg, #374055 13.12%, #1a202e 107%);
-    width: ${({ messageBoxWidth }) => `${messageBoxWidth}px`};
-    padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[2]}`};
-    font-size: ${({ theme }) => theme.typography.sizing[1]};
-    color: ${({ theme }) => theme.palette.white};
-    text-align: center;
-    box-sizing: border-box;
-    word-wrap: break-word;
-  }
-
-  &:hover::before {
-    visibility: visible;
-    opacity: 1;
-    transform: ${({ placement }) =>
-      placement === 'top' || placement === 'bottom'
-        ? `translateY(0)`
-        : `translateX(0)`};
-  }
+  bottom: 175%;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 // Set Default theme in case ThemeProvider is not used
-StyledToolip.defaultProps = {
+StyledTooltip.defaultProps = {
   theme: defaultTheme,
 };
 
-export default Tooltip;
+export default NewTooltip;
