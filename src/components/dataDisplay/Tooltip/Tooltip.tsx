@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 import defaultTheme from '../../../theme';
@@ -17,7 +17,14 @@ const Tooltip = ({
   children = 'Target',
 }: TooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
-  const toggleTooltip = () => setShowTooltip(!showTooltip);
+
+  const checkTooltipDimensions = useCallback((node: HTMLDivElement) => {
+    if (node !== null) {
+      console.log(node?.getBoundingClientRect());
+    }
+  }, []);
+
+  const toggleTooltip = () => setShowTooltip((prevState) => !prevState);
 
   return (
     <StyledTooltip
@@ -27,7 +34,7 @@ const Tooltip = ({
     >
       {children}
       {showTooltip && (
-        <StyledMessageBox placement={placement}>
+        <StyledMessageBox ref={checkTooltipDimensions} placement={placement}>
           <StyledMessageContent
             placement={placement}
             messageBoxWidth={messageBoxWidth}
@@ -63,6 +70,7 @@ const StyledMessageBox = styled.div<StyledMessageBoxProps>`
   box-sizing: border-box;
   z-index: 1;
 
+  // Top
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
