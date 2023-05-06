@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import Panel from '../../surfaces/Panel/Panel';
+import Panel from '../../surfaces/Panel';
 
 export interface ModalProps {
   isOpen: boolean;

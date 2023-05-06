@@ -1,27 +1,52 @@
-import React, { ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import styled from 'styled-components';
+import defaultTheme from '../../../theme';
 
-export interface PanelProps {
+interface PanelProps {
+  borderColor?: string;
+  withShadow?: boolean;
+  bgColor?: string;
   children: ReactNode;
-  styles?: { [key: string]: string };
+  styles?: CSSProperties;
 }
 
-const Panel = ({ children, styles }: PanelProps) => {
-  return <StyledPanel {...{ style: styles }}>{children}</StyledPanel>;
+const Panel = ({
+  borderColor = '#EAECF2',
+  withShadow = false,
+  bgColor = '#FFF',
+  children,
+  styles,
+}: PanelProps) => {
+  return (
+    <StyledPanel {...{ style: styles, borderColor, withShadow, bgColor }}>
+      {children}
+    </StyledPanel>
+  );
 };
 
-const StyledPanel = styled.div`
-  ${({ theme }) => {
+interface StyledPanelProps {
+  borderColor: string;
+  withShadow: boolean;
+  bgColor: string;
+}
+
+const StyledPanel = styled.div<StyledPanelProps>`
+  ${({ theme, borderColor, withShadow, bgColor }) => {
     return `
-      border: 1px solid ${theme.palette.black};
+      position: relative;
+      border: 1px solid ${borderColor};
       border-radius: ${theme.borderRadius};
-      background-color: ${theme.palette.white};
-      width: 300px;
-      min-height: 250px;
+      box-shadow: ${withShadow && '0px 61px 66px rgba(43, 31, 79, 0.07)'};
+      background-color: ${bgColor};
       padding: ${theme.spacing[4]};
       overflow-wrap: break-word;
     `;
   }}
 `;
+
+// Set Default theme in case ThemeProvider is not used
+StyledPanel.defaultProps = {
+  theme: defaultTheme,
+};
 
 export default Panel;
