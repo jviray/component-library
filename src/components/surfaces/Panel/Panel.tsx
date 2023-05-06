@@ -1,13 +1,11 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import styled from 'styled-components';
 import defaultTheme from '../../../theme';
 
-interface PanelProps {
+interface PanelProps extends ComponentPropsWithoutRef<'div'> {
   borderColor?: string;
   withShadow?: boolean;
   bgColor?: string;
-  children: ReactNode;
-  styles?: CSSProperties;
 }
 
 const Panel = ({
@@ -15,29 +13,23 @@ const Panel = ({
   withShadow = false,
   bgColor = '#FFF',
   children,
-  styles,
+  ...rest
 }: PanelProps) => {
   return (
-    <StyledPanel {...{ style: styles, borderColor, withShadow, bgColor }}>
+    <StyledPanel {...{ borderColor, withShadow, bgColor, ...rest }}>
       {children}
     </StyledPanel>
   );
 };
 
-interface StyledPanelProps {
-  borderColor: string;
-  withShadow: boolean;
-  bgColor: string;
-}
-
-const StyledPanel = styled.div<StyledPanelProps>`
+const StyledPanel = styled.div<PanelProps>`
   ${({ theme, borderColor, withShadow, bgColor }) => {
     return `
       position: relative;
       border: 1px solid ${borderColor};
       border-radius: ${theme.borderRadius};
       box-shadow: ${withShadow && '0px 61px 66px rgba(43, 31, 79, 0.07)'};
-      background-color: ${bgColor};
+      background: ${bgColor};
       padding: ${theme.spacing[4]};
       overflow-wrap: break-word;
     `;

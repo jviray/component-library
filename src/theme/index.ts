@@ -1,14 +1,20 @@
 import { DefaultTheme } from 'styled-components';
 
 const CRAYOLA = '#18A974';
+const AQUAMARINE = '#72C9A9';
+const SALEM = '#0D7951';
 const PITCH_BLACK = '#000000';
+const WHITE = '#FFFFFF';
 const LOTION = '#FAFAFA';
 const BORDER_RADIUS = '10px';
 
 const defaultTheme: DefaultTheme = {
   palette: {
     primary: CRAYOLA,
-    white: LOTION,
+    lighterPrimary: AQUAMARINE,
+    darkerPrimary: SALEM,
+    white: WHITE,
+    darkerWhite: LOTION,
     black: PITCH_BLACK,
   },
   spacing: [
