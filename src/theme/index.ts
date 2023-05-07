@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 const CRAYOLA = '#18A974';
-const AQUAMARINE = '#72C9A9';
+const AQUAMARINE = '#32C38E'; // #72C9A9
 const SALEM = '#0D7951';
 const PITCH_BLACK = '#000000';
 const WHITE = '#FFFFFF';

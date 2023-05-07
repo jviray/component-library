@@ -34,13 +34,13 @@ const StyledButton = styled.button<ButtonProps>`
           color: ${theme.palette.white};
 
           :hover {
-            border-color: ${theme.palette.lighterPrimary};
-            background: ${theme.palette.lighterPrimary};
+            border-color: ${theme.palette.darkerPrimary};
+            background: ${theme.palette.darkerPrimary};
           }
 
           :active {
-            border-color: ${theme.palette.darkerPrimary};
-            background: ${theme.palette.darkerPrimary};
+            border-color: ${theme.palette.lighterPrimary};
+            background: ${theme.palette.lighterPrimary};
           }
         `;
 
@@ -51,13 +51,13 @@ const StyledButton = styled.button<ButtonProps>`
 
           :hover {
             border-color: ${theme.palette.darkerPrimary};
+            background: ${theme.palette.darkerWhite};
             color: ${theme.palette.darkerPrimary};
           }
 
           :active {
-            border-color: ${theme.palette.darkerPrimary};
-            background: ${theme.palette.darkerWhite};
-            color: ${theme.palette.darkerPrimary};
+            border-color: ${theme.palette.lighterPrimary};
+            color: ${theme.palette.lighterPrimary};
           }
         `;
     }
